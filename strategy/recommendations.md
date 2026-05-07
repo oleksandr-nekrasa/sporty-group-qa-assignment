@@ -63,3 +63,7 @@ As the automation suite grows, introduce:
 - smoke and regression suites,
 - parallel execution,
 - centralized test data management.
+
+## Notes 
+Current implementation uses a static test user for simplicity.
+In production-grade automation, test data isolation and state reset mechanisms should be introduced.
