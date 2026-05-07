@@ -55,7 +55,7 @@ source venv/bin/activate
 Install dependencies:
 
 ```bash
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 ```
 
 ---
@@ -63,7 +63,7 @@ pip install -r requirements.txt
 ## Run UI Test
 
 ```bash
-pytest tests/ui/test_single_bet_placement.py -v -s
+python -m pytest tests/ui/test_single_bet_placement.py -v -s
 ```
 
 ---
@@ -71,7 +71,7 @@ pytest tests/ui/test_single_bet_placement.py -v -s
 ## Run API Test
 
 ```bash
-pytest tests/api/test_place_bet_api_validation.py -v -s
+python -m pytest tests/api/test_place_bet_api_validation.py -v -s
 ```
 
 ---
