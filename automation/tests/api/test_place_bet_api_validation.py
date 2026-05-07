@@ -31,4 +31,10 @@ def test_place_bet_rejects_stake_above_maximum():
 
     assert response.status_code == 422
 
+    print("[STEP] Verifying validation error response...")
+
+    response_body = response.json()
+
+    assert "message" in response_body
+
     print("[SUCCESS] API correctly rejected stake above maximum limit.")

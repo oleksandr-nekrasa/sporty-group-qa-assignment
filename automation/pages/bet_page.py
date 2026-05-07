@@ -7,10 +7,12 @@ from utils.config import FULL_URL
 
 class BetPage:
 
+    BALANCE_HEADER = (By.XPATH, "//*[contains(text(), 'Balance:')]")
     MATCH_CARD = (By.CSS_SELECTOR, "[id^='match-card-']")
     ODDS_BUTTON = (By.CSS_SELECTOR, "button.oddsButton[id^='odds-']")
-    STAKE_INPUT = (By.ID, "bet-slip-stake-input")
+    PAYOUT_VALUE = (By.XPATH, "//*[contains(text(), 'Potential Payout')]/following::*[contains(text(), '€')]")
     PLACE_BET_BUTTON = (By.ID, "bet-slip-place-bet")
+    STAKE_INPUT = (By.ID, "bet-slip-stake-input")
     SUCCESS_MODAL = (By.XPATH, "//h2[contains(text(), 'Bet Placed Successfully!')]")
 
     def __init__(self, driver):
@@ -47,3 +49,21 @@ class BetPage:
         return self.wait.until(
             EC.visibility_of_element_located(self.SUCCESS_MODAL)
         ).is_displayed()
+
+    def get_payout_value(self):
+        payout = self.wait.until(
+            EC.visibility_of_element_located(self.PAYOUT_VALUE)
+        )
+        return payout.text
+
+    def get_balance_value(self):
+        balance = self.wait.until(
+            EC.visibility_of_element_located(self.BALANCE_HEADER)
+        )
+        return balance.text
+
+    def get_bet_slip_text(self):
+        return self.driver.page_source
+
+    def get_page_text(self):
+        return self.driver.find_element("tag name", "body").text
